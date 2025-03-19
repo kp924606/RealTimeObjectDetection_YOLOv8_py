@@ -160,6 +160,15 @@ pip install opencv-contrib-python
 
 ------
 
+# 4. Note
+
+```diff
+! 1.本程式所使用的 image 資料夾內女生模特兒皆為我使用SD繪製出來的虛擬人物。
+! 2.本程式所使用的 Traffic_01.mp4 為路況即時影像取得。
+```
+
+------
+
 ## About Me
 Thanks & Best Regards !
 
