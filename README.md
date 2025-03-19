@@ -3,6 +3,11 @@
 # RealTimeObjectDetection_YOLOv8_py
 RealTimeObjectDetection_YOLOv8/即時物件辨識
 
+![image](https://github.com/user-attachments/assets/15616763-6b85-4dec-9635-2deed89f8b6d)
+
+![image](https://github.com/user-attachments/assets/ed724ee4-3fd4-48ca-9c8a-3bccb81901cd)
+
+
 # 1. Package Introduce
 
 ## 1-1. OpenCV (cv2)
@@ -95,7 +100,63 @@ pip install opencv-contrib-python
 ```
 -------
 
+## 3. py Code：
 
+## 3-1. 01_ObjectDetection.py
+
+使用 YOLOv8 進行物體檢測，並將偵測到的物體進行模糊處理。以下是簡要概述：
+
+### 主要功能：
+
+- 安裝必要套件：
+  
+	安裝 ultralytics 用於 YOLOv8：pip3 install ultralytics
+
+	安裝 opencv-contrib-python 用於影像處理：pip install opencv-contrib-python
+
+- 設定視窗及影像來源：
+
+	cv2.namedWindow('YOLOv8', cv2.WINDOW_NORMAL) 設定視窗名稱與顯示模式。
+
+	影片來源可以是檔案、視訊鏡頭或網路影片。此範例使用 target = 'Video\Traffic_01.mp4' 來讀取本地影片檔。
+
+- 載入 YOLO 模型：
+
+	使用 YOLO('yolov8x.pt') 載入 YOLOv8 的權重檔案（可以選擇不同模型，這裡使用的是 yolov8x.pt，適用於多種物體識別任務）。
+
+- 讀取影片及進行物體檢測：
+
+	使用 OpenCV 讀取影片，每幀進行物體檢測：results = model(frame, verbose=False)。
+
+	偵測到的物體會標註在影像上，並用 cv2.GaussianBlur 模糊處理物體區域。
+
+- 顯示 FPS 並繪製結果：
+
+	計算每秒幀數（FPS）並顯示在畫面上：cv2.putText(frame, 'FPS=' + str(FPS), (20, 35), ...)。
+
+	使用 frame = results[0].plot() 來繪製檢測結果，並顯示在視窗中。
+
+- 重播影片功能：
+
+	如果影片播放完畢，會顯示提示訊息：cv2.putText(frame, '請按任意鍵, 將重新撥放', (20, 60), ...)。
+
+	使用 cap.set(cv2.CAP_PROP_POS_FRAMES, 0) 將影片回到第一幀，並繼續播放。
+
+- 退出程式：
+
+	按下 Esc 鍵 (key == 27) 可退出程式。
+
+辨識結果，人、物品等
+![image](https://github.com/user-attachments/assets/5c01a1d1-bde2-4e20-930c-6b148f603264)
+
+辨識結果，車
+![image](https://github.com/user-attachments/assets/13b05326-d6a2-4474-a7dd-5c6010fc4323)
+
+## 3-2 01_ObjectDetectionToMarkBySelf.py
+
+相較 01_ObjectDetection.py，顯示統計資訊，並對偵測到的物體進行邊框繪製框線、顯示屬性資訊、高斯模糊處理。
+
+![image](https://github.com/user-attachments/assets/f455772b-ac09-44b9-adce-a65d514bea28)
 
 ------
 
